@@ -74,6 +74,7 @@ def find_unique_devices(records):
     for record in records:
         if record not in devices[record.device_name]:
             devices[record.device_name].append(record)
+            devices[" "+record.device_name].append(record) #account for potential leading white space in device name (this gets erased by windows in copies so we still want to match on it)
 
     def get_timestamp(rec):
         return rec.time
